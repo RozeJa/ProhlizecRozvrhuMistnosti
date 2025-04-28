@@ -76,7 +76,6 @@ public class RozvrhFrame extends JFrame {
                 .toList());
             akce.put(den, panelAkci);
             panelAkci.vykrelsiAkce(panel, g, vyucHodiny);
-            g.gridy++;
         }
 
         g.gridx = 0;
@@ -104,9 +103,6 @@ public class RozvrhFrame extends JFrame {
 
             g.gridy += g.gridheight;
             g.gridheight = 1;
-
-            System.out.println(days[i]);
-            System.out.println(pocetSkupinVPaneluAkci);
         }
 
         JScrollPane scrollPane = new JScrollPane(panel);
