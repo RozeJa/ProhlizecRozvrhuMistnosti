@@ -1,5 +1,7 @@
 package cz.uhk.data;
 
+import java.time.LocalTime;
+
 public class RozvrhovaAkce {
     private String predmet;
     private String nazev;
@@ -8,6 +10,15 @@ public class RozvrhovaAkce {
     private CasovyUdaj hodinaSkutOd;
     private CasovyUdaj hodinaSkutDo;
     private Ucitel ucitel;
+
+    public LocalTime getCasOd() {
+        String[] parts = hodinaSkutOd.getValue().split(":");
+        return LocalTime.of(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+    }
+    public LocalTime getCasDo() {
+        String[] parts = hodinaSkutDo.getValue().split(":");
+        return LocalTime.of(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
+    }
 
     public CasovyUdaj getHodinaSkutOd() {
         return hodinaSkutOd;
@@ -50,5 +61,13 @@ public class RozvrhovaAkce {
     }
     public void setUcitel(Ucitel ucitel) {
         this.ucitel = ucitel;
+    }
+
+    public boolean prekryvaSeSAkci(RozvrhovaAkce akce) {
+        if (this.getCasOd().isBefore(akce.getCasOd().plusMinutes(1))) {
+            return this.getCasDo().isAfter(akce.getCasOd().minusMinutes(1));
+        } else {
+            return this.getCasOd().isAfter(akce.getCasDo().minusMinutes(1));
+        }
     }
 }

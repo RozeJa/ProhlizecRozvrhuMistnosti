@@ -103,8 +103,7 @@ public class MainFraime extends JFrame {
             public void mouseClicked(MouseEvent e) {                
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     RozvrhFrame rozvrhFrame = new RozvrhFrame(budova, mistnost, nactenaData.getRozvrhovaAkce());
-
-                    rozvrhFrame.setVisible(true);
+                    rozvrhFrame.setVisible(true);   
                 }
             }
         });

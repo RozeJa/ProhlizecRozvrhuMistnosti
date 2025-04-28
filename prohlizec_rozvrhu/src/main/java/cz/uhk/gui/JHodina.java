@@ -1,6 +1,6 @@
 package cz.uhk.gui;
 
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.time.LocalTime;
 
 import javax.swing.JLabel;
@@ -39,11 +39,13 @@ public class JHodina extends JPanel {
     public JHodina(String poradiHodiny, LocalTime zacatek, LocalTime konec) {
         this.poradiHodiny = poradiHodiny;
         this.zacatek = zacatek;
-        this.konec = konec;        
+        this.konec = konec;   
         
+        setLayout(new GridLayout(3, 1));
+        
+        add(new JLabel(zacatek.toString()));
         add(new JLabel(poradiHodiny));
-        add(new JLabel(zacatek.toString()), BorderLayout.NORTH);
-        add(new JLabel(konec.toString()), BorderLayout.SOUTH);
+        add(new JLabel(konec.toString()));
     }
 
     
